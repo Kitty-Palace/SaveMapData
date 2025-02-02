@@ -1,5 +1,3 @@
-"use strict";
-
 // Ensure HitchFunction is available
 if (typeof HitchFunction === 'undefined') {
     function HitchFunction(functionName, HitchFunction) {
