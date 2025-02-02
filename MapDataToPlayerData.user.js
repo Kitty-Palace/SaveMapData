@@ -1,18 +1,3 @@
-// ==UserScript==
-// @name         Map Save / Load to Player commands
-// @namespace    https://www.bondageprojects.com
-// @version      2025-02-02
-// @description  Adds commands to save and load ChatRoomMaps to/ from the Player
-// @author       Laele
-// @run-at       document-end
-// @match https://*.bondageprojects.elementfx.com/R*/*
-// @match https://*.bondage-europe.com/R*/*
-// @match https://*.bondageprojects.com/R*/*
-// ==/UserScript==
-
-(function() {
-    'use strict';
-
     function waitForGameLoad(callback) {
         if (typeof Player !== 'undefined' && Player.OnlineSettings) {
             callback();
@@ -247,4 +232,3 @@
             return Player.OnlineSettings.SavedMaps;
         }
     });
-})();
