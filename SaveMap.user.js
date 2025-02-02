@@ -17,7 +17,9 @@
     'use strict';
     console.log(`SaveMap Data Loader - loading...`);
     function waitForGameLoad(callback) {
+        console.log('Waiting for game to load...');
         if (typeof Player !== 'undefined' && Player.OnlineSettings) {
+            console.log('Game loaded.');
             callback();
         } else {
             setTimeout(() => waitForGameLoad(callback), 100);
@@ -28,6 +30,7 @@
         const scriptUrl = 'https://raw.githubusercontent.com/Kitty-Palace/SaveMapData/refs/heads/main/MapDataToPlayerData.user.js';
         const script = document.createElement('script');
         script.src = scriptUrl;
+        console.log(`Attempting to load script from ${scriptUrl}`);
         script.onload = function() {
             console.log(`SaveMap Data Loader - loaded successfully.`);
         };
@@ -38,9 +41,25 @@
                 target: event.target,
                 currentTarget: event.currentTarget,
                 timeStamp: event.timeStamp,
-                src: event.target.src
+                src: event.target.src,
+                lineno: event.lineno,
+                colno: event.colno,
+                error: event.error
             });
         };
+        script.addEventListener('error', function(event) {
+            console.error(`SaveMap Data Loader - failed to load script from ${scriptUrl}`);
+            console.error(`Error details:`, {
+                type: event.type,
+                target: event.target,
+                currentTarget: event.currentTarget,
+                timeStamp: event.timeStamp,
+                src: event.target.src,
+                lineno: event.lineno,
+                colno: event.colno,
+                error: event.error
+            });
+        });
         document.head.appendChild(script);
     });
 })();
