@@ -9,7 +9,6 @@
 // @match https://*.bondageprojects.com/R*/*
 // @match http://localhost:*/*
 // @run-at       document-start
-// @priority     1
 // ==/UserScript==
 
 (function() {
