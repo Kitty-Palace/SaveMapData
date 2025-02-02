@@ -13,12 +13,12 @@
 
 (function() {
   'use strict';
-
+  console.log(`SaveMap Data Loader - loading...`);
   const scriptUrl = 'https://raw.githubusercontent.com/Kitty-Palace/SaveMapData/refs/heads/main/MapData%20to%20playerdata.js';
   const script = document.createElement('script');
   script.src = scriptUrl;
   script.onload = function() {
-      console.log(`${GM_info.script.name} by ${GM_info.script.author} loaded successfully.`);
+      console.log(`SaveMap Data Loader - loaded successfully.`);
   };
   document.head.appendChild(script);
 })();
