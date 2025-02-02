@@ -20,5 +20,8 @@
   script.onload = function() {
       console.log(`SaveMap Data Loader - loaded successfully.`);
   };
+  script.onerror = function(event) {
+      console.error(`SaveMap Data Loader - failed to load. Reason: ${event.message || 'unknown error'}`);
+  };
   document.head.appendChild(script);
 })();
