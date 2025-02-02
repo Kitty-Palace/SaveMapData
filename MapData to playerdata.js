@@ -21,8 +21,8 @@ let mapCache = Player.OnlineSettings.SavedMaps ?? {};
 // Save the current chatroom map to the cache
 function saveMap(name) {
     if (mapCache[name]) {
-        console.error("This name has been taken, use /MapOverride `name` to replace the current saved map.");
-        ChatRoomSendLocal("This name has been taken, use /MapOverride `name` to replace the current saved map.", 5000);
+        console.error("This name has been taken, use !MapOverride `name` to replace the current saved map.");
+        ChatRoomSendLocal("This name has been taken, use !MapOverride `name` to replace the current saved map.", 5000);
         return;
     }
     if (!ChatRoomData || !ChatRoomData.MapData) {
@@ -106,11 +106,11 @@ function removeMap(name) {
 // Show all available map commands
 function showMapCommands() {
     const commands = [
-        "/MapSave <name> - Save the current map",
-        "/MapOverride <name> - Override the current map",
-        "/MapLoad <name> - Load a saved map",
-        "/MapList - List all saved maps",
-        "/MapRemove <name> - Remove a saved map"
+        "!MapSave <name> - Save the current map",
+        "!MapOverride <name> - Override the current map",
+        "!MapLoad <name> - Load a saved map",
+        "!MapList - List all saved maps",
+        "!MapRemove <name> - Remove a saved map"
     ];
     console.log("Available map commands:", commands);
     ChatRoomSendLocal(`Available map commands: ${commands.join(", ")}`, 5000);
@@ -120,42 +120,42 @@ function showMapCommands() {
 function handleCommand(command) {
     const [cmd, ...args] = command.split(" ");
     switch (cmd.toLowerCase()) {
-        case "/mapsave":
+        case "!mapsave":
             if (args.length < 1) {
-                console.error("Usage: /MapSave <name>");
-                ChatRoomSendLocal("Usage: /MapSave <name>", 5000);
+                console.error("Usage: !MapSave <name>");
+                ChatRoomSendLocal("Usage: !MapSave <name>", 5000);
                 return;
             }
             saveMap(args[0]);
             break;
-        case "/mapoverride":
+        case "!mapoverride":
             if (args.length < 1) {
-                console.error("Usage: /MapOverride <name>");
-                ChatRoomSendLocal("Usage: /MapOverride <name>", 5000);
+                console.error("Usage: !MapOverride <name>");
+                ChatRoomSendLocal("Usage: !MapOverride <name>", 5000);
                 return;
             }
             overrideMap(args[0]);
             break;
-        case "/mapload":
+        case "!mapload":
             if (args.length < 1) {
-                console.error("Usage: /MapLoad <name>");
-                ChatRoomSendLocal("Usage: /MapLoad <name>", 5000);
+                console.error("Usage: !MapLoad <name>");
+                ChatRoomSendLocal("Usage: !MapLoad <name>", 5000);
                 return;
             }
             loadMap(args[0]);
             break;
-        case "/maplist":
+        case "!maplist":
             listMaps();
             break;
-        case "/mapremove":
+        case "!mapremove":
             if (args.length < 1) {
-                console.error("Usage: /MapRemove <name>");
-                ChatRoomSendLocal("Usage: /MapRemove <name>", 5000);
+                console.error("Usage: !MapRemove <name>");
+                ChatRoomSendLocal("Usage: !MapRemove <name>", 5000);
                 return;
             }
             removeMap(args[0]);
             break;
-        case "/map":
+        case "!map":
             showMapCommands();
             break;
         default:
@@ -167,7 +167,7 @@ function handleCommand(command) {
 // Hook into the chat message handler to intercept commands
 function interceptChatMessage(originalFunction, ...args) {
     const message = args[0];
-    if (message.startsWith("/")) {
+    if (message.startsWith("!")) {
         handleCommand(message);
         // Make the message hidden instead of stopping the actual sending
         args[0] = "";
