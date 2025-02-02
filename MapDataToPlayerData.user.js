@@ -1,3 +1,21 @@
+// ==UserScript==
+// @name         Save Map Data
+// @namespace    https://www.bondageprojects.com
+// @version      1.0
+// @description  Save snd Load MapData to your player
+// @author       Laele
+// @downloadURL https://github.com/Kitty-Palace/SaveMapData/raw/refs/heads/main/SaveMap.user.js
+// @updateURL   https://github.com/Kitty-Palace/SaveMapData/raw/refs/heads/main/SaveMap.user.js
+// @match https://*.bondageprojects.elementfx.com/R*/*
+// @match https://*.bondage-europe.com/R*/*
+// @match https://*.bondageprojects.com/R*/*
+// @match http://localhost:*/*
+// @run-at       document-end
+// ==/UserScript==
+
+(function() {
+    'use strict';
+
     function waitForGameLoad(callback) {
         if (typeof Player !== 'undefined' && Player.OnlineSettings) {
             callback();
@@ -232,3 +250,4 @@
             return Player.OnlineSettings.SavedMaps;
         }
     });
+})();
