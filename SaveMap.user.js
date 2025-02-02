@@ -22,6 +22,7 @@
   };
   script.onerror = function(event) {
       console.error(`SaveMap Data Loader - failed to load. Reason: ${event.message || 'unknown error'}`);
+      console.error(`Error details:`, event);
   };
   document.head.appendChild(script);
-})();
+})();;
