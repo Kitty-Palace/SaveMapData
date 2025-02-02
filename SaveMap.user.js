@@ -25,7 +25,7 @@
     }
 
     waitForGameLoad(() => {
-        const scriptUrl = 'https://raw.githubusercontent.com/Kitty-Palace/SaveMapData/refs/heads/main/MapData%20to%20playerdata.js';
+        const scriptUrl = 'https://raw.githubusercontent.com/Kitty-Palace/SaveMapData/refs/heads/main/MapData%20to%20playerdata.user.js';
         const script = document.createElement('script');
         script.src = scriptUrl;
         script.onload = function() {
