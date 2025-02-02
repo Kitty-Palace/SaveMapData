@@ -11,3 +11,7 @@ This script allows you to save, load, list, and remove maps in the game using si
 - `/MapList` - List all saved maps.
 - `/MapRemove <name>` - Remove the saved map with the specified name.
 - `/Map` - Show all available map commands.
+
+## TamperMonkey Install
+
+[Install SaveMapData Script](https://github.com/Kitty-Palace/SaveMapData/raw/refs/heads/main/SaveMap.user.js)
