@@ -8,6 +8,7 @@
 // @match https://*.bondage-europe.com/R*/*
 // @match https://*.bondageprojects.com/R*/*
 // @match http://localhost:*/*
+// @run-at       document-start
 // ==/UserScript==
 
 (function() {
